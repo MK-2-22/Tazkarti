@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import com.example.demo.service.EventService;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.demo.service.EventService;
 
 
 
@@ -31,6 +33,15 @@ public class EventController {
         return "event-details";
     }
     
+
+    @GetMapping("/events/search")
+    public String searchEvents(@RequestParam String keyword,
+                           Model model)
+    {
+        model.addAttribute("events", eventService.searchEvents(keyword));
+
+        return "events";
+    }
   
 
     

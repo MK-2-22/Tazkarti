@@ -43,11 +43,28 @@
             Browse all available events and choose your favorite experience.
         </p>
 
+        <form class="search-form"
+              th:action="@{/events/search}"
+              method="get">
+
+            <input type="text"
+                   name="keyword"
+                   placeholder="Search events..." />
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Search
+            </button>
+
+        </form>
+
         <div class="events-grid">
 
-            <div class="event-card" th:each="event : ${events}">
+            <div class="event-card"
+                 th:each="event : ${events}">
 
-                <img th:src="${event.imageUrl}" alt="Event Image">
+                <img th:src="@{${event.imageUrl}}"
+                     alt="Event Image">
 
                 <div class="event-body">
 

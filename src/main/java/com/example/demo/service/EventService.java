@@ -1,12 +1,10 @@
 package com.example.demo.service;
-import com.example.demo.model.Event;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Event;
 import com.example.demo.repository.EventRepository;
 
 @Service
@@ -41,6 +39,11 @@ public Optional<Event> getEventByID(Long id)
     }
 
     return optEvent;
+}
+
+public List<Event> searchEvents(String keyword)
+{
+    return repo.findByTitleContainingIgnoreCase(keyword);
 }
 
 }
