@@ -34,9 +34,9 @@
 
         <p class="tag">Event Details</p>
 
-        <h2 th:text="${event.title}"></h2>
+        <h2 th:text="${event.get().title}"></h2>
 
-        <p th:text="${event.description}"></p>
+        <p th:text="${event.get().description}"></p>
 
     </div>
 
@@ -48,31 +48,32 @@
 
         <div class="event-card-details">
 
-            <img th:src="${event.imageUrl}" alt="Event Image">
+            <img th:src="${event.get().imageUrl}"
+                 alt="Event Image">
 
             <div class="event-body">
 
-                <h3 th:text="${event.title}"></h3>
+                <h3 th:text="${event.get().title}"></h3>
 
                 <p>
                     Location:
-                    <span th:text="${event.location}"></span>
+                    <span th:text="${event.get().location}"></span>
                 </p>
 
                 <p>
                     Price:
-                    <span th:text="${event.price}"></span> EGP
+                    <span th:text="${event.get().price}"></span> EGP
                 </p>
 
                 <p>
                     Capacity:
-                    <span th:text="${event.capacity}"></span>
+                    <span th:text="${event.get().capacity}"></span>
                 </p>
 
-                <p th:text="${event.description}"></p>
+                <p th:text="${event.get().description}"></p>
 
                 <a class="btn btn-primary"
-                   th:href="@{/booking/{id}(id=${event.id})}">
+                   th:href="@{/booking/{id}(id=${event.get().id})}">
                     Book Now
                 </a>
 

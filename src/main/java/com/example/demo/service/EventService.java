@@ -3,6 +3,7 @@ import com.example.demo.model.Event;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,30 @@ public class EventService {
     {
         this.repo = repo;
     }
+
+    public List<Event> getAllEvents(){
+
+    List<Event> events = repo.findAll();
+
+    if(events.isEmpty())
+    {
+        System.out.println("No Events Found");
+    }
+
+    return events;
+}
+
+public Optional<Event> getEventByID(Long id)
+{
+    Optional<Event> optEvent = repo.findById(id);
+
+      if(optEvent.isEmpty())
+    {
+        System.out.println("No events found with this ID");
+
+    }
+
+    return optEvent;
+}
 
 }
