@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TicketZone | Events</title>
+
+    <link rel="stylesheet" th:href="@{/css/events.css}">
+</head>
+
+<body>
+
+<header class="hero">
+
+    <nav class="nav">
+
+        <h1 class="logo">TicketZone</h1>
+
+        <ul class="nav-links">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/events}">Events</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/register}">Sign Up</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="hero-content">
+        <p class="tag">Events</p>
+        <h2>Choose Your Next Experience</h2>
+    </div>
+
+</header>
+
+<main class="simple-main">
+
+    <section class="simple-section">
+
+        <h3>Available Events</h3>
+
+        <p class="events-note">
+            Browse all available events and choose your favorite experience.
+        </p>
+
+        <div class="events-grid">
+
+            <div class="event-card" th:each="event : ${events}">
+
+                <img th:src="${event.imageUrl}" alt="Event Image">
+
+                <div class="event-body">
+
+                    <h4 th:text="${event.title}"></h4>
+
+                    <p th:text="${event.location}"></p>
+
+                    <p>
+                        Price:
+                        <span th:text="${event.price}"></span> EGP
+                    </p>
+
+                    <a class="btn btn-primary"
+                       th:href="@{/events/{id}(id=${event.id})}">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>TicketZone - Your trusted ticket booking platform.</p>
+</footer>
+
+</body>
+</html>
