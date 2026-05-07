@@ -1,42 +1,144 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TicketZone | Contact</title>
-  <link rel="stylesheet" th:href="@{/styles.css}" />
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>TicketZone | Contact</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/events.css}" />
+
 </head>
+
 <body>
 
 <header class="hero">
-  <nav th:replace="~{navbar :: nav}"></nav>
 
-  <div class="hero-content">
-    <p class="tag">Contact</p>
-    <h2>Get in Touch</h2>
-  </div>
+    <nav class="nav">
+
+        <h1 class="logo">TicketZone</h1>
+
+        <ul class="nav-links">
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/events}">Events</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/register}">Sign Up</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="hero-content">
+
+        <p class="tag">Contact</p>
+
+        <h2>Get in Touch</h2>
+
+        <p>
+            Reach out to TicketZone for support,
+            booking assistance, or account help.
+        </p>
+
+    </div>
+
 </header>
 
 <main class="simple-main">
-  <section class="simple-section">
-    <h3>Contact Information</h3>
-    <p><strong>Email:</strong> support@ticketzone.com</p>
-    <p><strong>Phone:</strong> +1 555 876 3210</p>
-    <p><strong>Address:</strong> 90 Event Avenue, Downtown</p>
-    <p><strong>Hours:</strong> Monday - Sunday, 24 Hours</p>
-  </section>
 
-  <section class="simple-section">
-    <h3>Quick Help Topics</h3>
-    <div class="events-grid">
-      <article class="event-card"><div class="event-body"><h4>Booking Issues</h4><p>Problems selecting tickets or event listings.</p></div></article>
-      <article class="event-card"><div class="event-body"><h4>Payment Questions</h4><p>Card validation, payment confirmation, and receipts.</p></div></article>
-      <article class="event-card"><div class="event-body"><h4>Account Support</h4><p>Profile updates and general account assistance.</p></div></article>
-    </div>
-  </section>
+    <section class="simple-section">
+
+        <h3>Contact Information</h3>
+
+        <p>
+            <strong>Email:</strong>
+            support@ticketzone.com
+        </p>
+
+        <p>
+            <strong>Phone:</strong>
+            +1 555 876 3210
+        </p>
+
+        <p>
+            <strong>Address:</strong>
+            90 Event Avenue, Downtown
+        </p>
+
+        <p>
+            <strong>Hours:</strong>
+            Monday - Sunday, 24 Hours
+        </p>
+
+    </section>
+
+    <section class="simple-section">
+
+        <h3>Quick Help Topics</h3>
+
+        <div class="events-grid">
+
+            <div class="event-card">
+
+                <div class="event-body">
+
+                    <h4>Booking Issues</h4>
+
+                    <p>
+                        Problems selecting tickets
+                        or event listings.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="event-card">
+
+                <div class="event-body">
+
+                    <h4>Payment Questions</h4>
+
+                    <p>
+                        Card validation, payment
+                        confirmation, and receipts.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="event-card">
+
+                <div class="event-body">
+
+                    <h4>Account Support</h4>
+
+                    <p>
+                        Profile updates and general
+                        account assistance.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
 </main>
 
-<footer th:replace="~{footer :: footer}"></footer>
-<script th:src="@{/auth.js}"></script>
+<footer class="footer">
+
+    <p>
+        TicketZone - Your trusted ticket booking platform.
+    </p>
+
+</footer>
+
 </body>
 </html>

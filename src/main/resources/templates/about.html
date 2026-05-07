@@ -1,47 +1,130 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TicketZone | About</title>
-  <link rel="stylesheet" th:href="@{/styles.css}" />
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>TicketZone | About</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/events.css}" />
+
 </head>
+
 <body>
 
 <header class="hero">
-  <nav th:replace="~{navbar :: nav}"></nav>
 
-  <div class="hero-content">
-    <p class="tag">About us</p>
-    <h2>About TicketZone</h2>
-  </div>
+    <nav class="nav">
+
+        <h1 class="logo">TicketZone</h1>
+
+        <ul class="nav-links">
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/events}">Events</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/register}">Sign Up</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="hero-content">
+
+        <p class="tag">About Us</p>
+
+        <h2>About TicketZone</h2>
+
+        <p>
+            Your trusted platform for football matches,
+            concerts, and unforgettable experiences.
+        </p>
+
+    </div>
+
 </header>
 
 <main class="simple-main">
-  <section class="simple-section">
-    <h3>Who We Are</h3>
-    <p>TicketZone is an event ticketing platform for football matches, concerts, and live entertainment.</p>
-    <p>We focus on trusted listings, smooth booking, and secure payments so fans can book with confidence.</p>
-  </section>
 
-  <section class="simple-section home-stats">
-    <div><h4>10K+</h4><p>Happy Customers</p></div>
-    <div><h4>12+</h4><p>Live Listings</p></div>
-    <div><h4>99%</h4><p>Booking Success Rate</p></div>
-    <div><h4>24/7</h4><p>Support Availability</p></div>
-  </section>
+    <section class="simple-section">
 
-  <section class="simple-section">
-    <h3>Why Fans Choose TicketZone</h3>
-    <ol class="steps">
-      <li>Simple event discovery with organized categories.</li>
-      <li>Clear listing details with venue, date, and pricing.</li>
-      <li>Fast checkout flow with instant confirmation.</li>
-    </ol>
-  </section>
+        <h3>Who We Are</h3>
+
+        <p>
+            TicketZone is an event ticketing platform
+            for football matches, concerts,
+            and live entertainment.
+        </p>
+
+        <p>
+            We focus on trusted listings,
+            smooth booking, and secure payments
+            so fans can book with confidence.
+        </p>
+
+    </section>
+
+    <section class="simple-section home-stats">
+
+        <div>
+            <h4>10K+</h4>
+            <p>Happy Customers</p>
+        </div>
+
+        <div>
+            <h4>12+</h4>
+            <p>Live Listings</p>
+        </div>
+
+        <div>
+            <h4>99%</h4>
+            <p>Booking Success Rate</p>
+        </div>
+
+        <div>
+            <h4>24/7</h4>
+            <p>Support Availability</p>
+        </div>
+
+    </section>
+
+    <section class="simple-section">
+
+        <h3>Why Fans Choose TicketZone</h3>
+
+        <ol class="steps">
+
+            <li>
+                Simple event discovery
+                with organized categories.
+            </li>
+
+            <li>
+                Clear listing details
+                with venue, date, and pricing.
+            </li>
+
+            <li>
+                Fast checkout flow
+                with instant confirmation.
+            </li>
+
+        </ol>
+
+    </section>
+
 </main>
 
-<footer th:replace="~{footer :: footer}"></footer>
-<script th:src="@{/auth.js}"></script>
+<footer class="footer">
+
+    <p>
+        TicketZone - Your trusted ticket booking platform.
+    </p>
+
+</footer>
+
 </body>
 </html>
