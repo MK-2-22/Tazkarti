@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TicketZone | Contact</title>
+  <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+
+<header class="hero">
+  <nav th:replace="~{navbar :: nav}"></nav>
+
+  <div class="hero-content">
+    <p class="tag">Contact</p>
+    <h2>Get in Touch</h2>
+  </div>
+</header>
+
+<main class="simple-main">
+  <section class="simple-section">
+    <h3>Contact Information</h3>
+    <p><strong>Email:</strong> support@ticketzone.com</p>
+    <p><strong>Phone:</strong> +1 555 876 3210</p>
+    <p><strong>Address:</strong> 90 Event Avenue, Downtown</p>
+    <p><strong>Hours:</strong> Monday - Sunday, 24 Hours</p>
+  </section>
+
+  <section class="simple-section">
+    <h3>Quick Help Topics</h3>
+    <div class="events-grid">
+      <article class="event-card"><div class="event-body"><h4>Booking Issues</h4><p>Problems selecting tickets or event listings.</p></div></article>
+      <article class="event-card"><div class="event-body"><h4>Payment Questions</h4><p>Card validation, payment confirmation, and receipts.</p></div></article>
+      <article class="event-card"><div class="event-body"><h4>Account Support</h4><p>Profile updates and general account assistance.</p></div></article>
+    </div>
+  </section>
+</main>
+
+<footer th:replace="~{footer :: footer}"></footer>
+<script th:src="@{/auth.js}"></script>
+</body>
+</html>
