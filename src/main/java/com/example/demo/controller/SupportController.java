@@ -24,7 +24,6 @@ public class SupportController {
         return "support";
     }
 
-    // 4. Handle Support Form Submission with Validation
     @PostMapping("/support/send")
     public String handleSupportForm(@RequestParam String email,  @RequestParam String message,  Model model) {
                 
