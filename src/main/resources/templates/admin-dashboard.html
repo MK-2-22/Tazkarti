@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Tazkarti Admin Panel</h1>
+    <a th:href="@{/admin/add-event}">+ Add New Event</a>
+    <table border="1" style="width:100%; margin-top:20px;">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="event : ${events}">
+                <td th:text="${event.title}"></td>
+                <td th:text="${event.location}"></td>
+                <td th:text="${event.price}"></td>
+                <td>
+                    <a th:href="@{/admin/delete/{id}(id=${event.id})}" 
+                       onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
