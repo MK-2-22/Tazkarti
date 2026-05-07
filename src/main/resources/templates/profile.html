@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile - Tazkarti</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Welcome</h2>
+
+    <p><strong>Name:</strong> <span th:text="${user.name}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+    <p><strong>Role:</strong> <span th:text="${user.role}"></span></p>
+
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+</div>
+
+</body>
+</html>

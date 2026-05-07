@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>
-            Login
-        </title>
-        <link ref="stylesheet" th:href="@{/css/auth.css}">
-    </head>
-    <body>
-        <div class="container">
-            <p th:text="${error}" class="error">    
-            </p>
-                <form action="login" method="post">
-                    <input type="email" name="email" placeholder="Your email" required>
-                    <input type="password" name="password" placeholder="Your password" required>
-                    <button type="submit"> Login </button>
-                </form>
-            <p>
-                Don't have an account?
-                <a href="/register">Register</a>
-        </div>
-    </body>
+<head>
+    <title>Login - Tazkarti</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Login</h2>
+
+    <p th:text="${error}" class="error"></p>
+
+    <form action="/login" method="post">
+        <input type="email" name="email" placeholder="Enter Email" required>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account?
+        <a href="/register">Register Here</a>
+    </p>
+</div>
+
+</body>
 </html>
