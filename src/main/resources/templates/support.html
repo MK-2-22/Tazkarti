@@ -32,7 +32,7 @@
       <div th:if="${success}" style="color: white; background-color: #2ecc71; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
           <p th:text="${success}"></p>
       </div>
-      <form th:action="@{/support/send}" method="post">
+      <form action="/support/send" method="post">
         <input type="email" name="email" placeholder="Your Email" required 
                style="display:block; margin-bottom:10px; width:100%; padding:8px; border: 1px solid #ccc; border-radius: 4px;" />
         

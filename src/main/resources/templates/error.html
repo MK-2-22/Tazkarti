@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TicketZone | Error</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <header class="hero">
+        <nav th:replace="~{navbar :: nav}"></nav>
+    </header>
+
+    <main style="text-align: center; padding: 100px;">
+        <h1>Oops! Something went wrong.</h1>
+        <p>The page you are looking for doesn't exist or an error occurred.</p>
+        <a th:href="@{/support}" class="btn">Back to Support</a>
+    </main>
+
+    <footer th:replace="~{footer :: footer}"></footer>
+</body>
+</html>
