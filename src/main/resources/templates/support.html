@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TicketZone | Support</title>
+  <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+
+<header class="hero">
+  <nav th:replace="~{navbar :: nav}"></nav>
+
+  <div class="hero-content">
+    <p class="tag">Support</p>
+    <h2>We Are Here to Help</h2>
+  </div>
+</header>
+
+<main class="simple-main">
+  <section class="simple-section">
+    <h3>How We Support You</h3>
+    <p>Need help with booking or payment? Our support team is available 24/7.</p>
+    
+    <div style="margin-top: 20px; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+      <h4>Send us a Message</h4>
+
+      <div th:if="${error}" style="color: white; background-color: #ff4d4d; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+          <p th:text="${error}"></p>
+      </div>
+
+      <div th:if="${success}" style="color: white; background-color: #2ecc71; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+          <p th:text="${success}"></p>
+      </div>
+      <form th:action="@{/support/send}" method="post">
+        <input type="email" name="email" placeholder="Your Email" required 
+               style="display:block; margin-bottom:10px; width:100%; padding:8px; border: 1px solid #ccc; border-radius: 4px;" />
+        
+        <textarea name="message" placeholder="How can we help?" required 
+                  style="display:block; margin-bottom:10px; width:100%; padding:8px; border: 1px solid #ccc; border-radius: 4px; height: 100px;"></textarea>
+        
+        <button type="submit" class="btn">Send Support Request</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="simple-section">
+    <h3>Support Channels</h3>
+    <div class="events-grid">
+      <article class="event-card">
+          <div class="event-body">
+              <h4>Live Chat</h4>
+              <p>Average response time: under 5 minutes.</p>
+          </div>
+      </article>
+      <article class="event-card">
+          <div class="event-body">
+              <h4>Email Support</h4>
+              <p>support@ticketzone.com</p>
+          </div>
+      </article>
+      <article class="event-card">
+          <div class="event-body">
+              <h4>Phone Support</h4>
+              <p>+1 555 876 3210</p>
+          </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer th:replace="~{footer :: footer}"></footer>
+
+<script th:src="@{/validation.js}"></script>
+</body>
+</html>
