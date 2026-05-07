@@ -1,55 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Add New Event</title>
-    <style>
-        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: bold; }
-        input, textarea { width: 100%; padding: 8px; margin-top: 5px; }
-        button { background: #27ae60; color: white; border: none; padding: 10px 20px; cursor: pointer; }
-        .back-link { display: block; margin-top: 20px; color: #3498db; }
-    </style>
+    <title>Add New Event - Tazkarti Admin</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
 </head>
 <body>
-    <h1>Create New Event</h1>
-    
-    <form th:action="@{/admin/save}" th:object="${event}" method="POST">
-        
-        <div class="form-group">
-            <label>Event Title:</label>
-            <input type="text" th:field="*{title}" required placeholder="e.g. Music Festival" />
+    <div class="sidebar">
+        <h2>Tazkarti Admin</h2>
+        <a th:href="@{/admin/dashboard}">Dashboard</a>
+        <a th:href="@{/admin/add-event}" class="active">+ New Event</a>
+    </div>
+
+    <div class="main-content">
+        <div class="card">
+            <h1>Create New Event</h1>
+            <form th:action="@{/admin/save}" th:object="${event}" method="POST">
+                <div class="form-group">
+                    <label>Event Name</label>
+                    <input type="text" th:field="*{title}" placeholder="e.g. Cairo Tech Summit" required>
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" th:field="*{location}" placeholder="Venue Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Price (EGP)</label>
+                    <input type="number" step="0.01" th:field="*{price}" required>
+                </div>
+                <div class="form-group">
+                    <label>Capacity</label>
+                    <input type="number" th:field="*{capacity}" required>
+                </div>
+                <button type="submit" class="btn btn-save">Create Event</button>
+                <a th:href="@{/admin/dashboard}" style="margin-left:15px;">Cancel</a>
+            </form>
         </div>
-
-        <div class="form-group">
-            <label>Location:</label>
-            <input type="text" th:field="*{location}" placeholder="e.g. Cairo Opera House" />
-        </div>
-
-        <div class="form-group">
-            <label>Price (EGP):</label>
-            <input type="number" step="0.01" th:field="*{price}" required />
-        </div>
-
-        <div class="form-group">
-            <label>Capacity:</label>
-            <input type="number" th:field="*{capacity}" />
-        </div>
-
-        <div class="form-group">
-            <label>Description:</label>
-            <textarea th:field="*{description}" rows="4"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Image URL:</label>
-            <input type="text" th:field="*{imageUrl}" placeholder="http://..." />
-        </div>
-
-        <button type="submit">Save Event</button>
-    </form>
-
-    <a class="back-link" th:href="@{/admin/dashboard}">← Back to Dashboard</a>
+    </div>
 </body>
 </html>
