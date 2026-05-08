@@ -37,9 +37,10 @@ public class SecurityConfig {
                 .requestMatchers("/admin/**", "/admin-dashboard").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )
-            .formLogin(form -> form
+           .formLogin(form -> form
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
+                .usernameParameter("email")
                 .defaultSuccessUrl("/home", true)
                 .failureUrl("/login?error=true")
                 .permitAll()
