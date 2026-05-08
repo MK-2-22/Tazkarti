@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TicketZone | Booking</title>
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<header class="hero">
+
+    <nav class="nav">
+
+        <h1 class="logo">TicketZone</h1>
+
+        <ul class="nav-links">
+
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="support.html">Support</a></li>
+
+            <li id="loginNavItem">
+                <a href="login.html">Login</a>
+            </li>
+
+            <li id="signupNavItem">
+                <a href="signup.html">Sign Up</a>
+            </li>
+
+            <li id="userNavItem" style="display:none">
+                <a href="#" id="navUserName">Hi, User</a>
+            </li>
+
+            <li id="logoutNavItem" style="display:none">
+                <a href="#" id="logoutBtn">Logout</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <div class="hero-content">
+
+        <p class="tag">Book your favorite event</p>
+
+        <h2>Reserve Your Tickets</h2>
+
+        <p>
+            Complete your booking quickly and securely.
+        </p>
+
+    </div>
+
+</header>
+
+<main class="simple-main">
+
+    <section class="simple-section">
+
+        <h3>Event Information</h3>
+
+        <div class="event-body" id="eventDetails">
+
+            <p><strong>Event:</strong> Al Ahly vs Zamalek</p>
+
+            <p><strong>Location:</strong> Cairo International Stadium</p>
+
+            <p><strong>Date:</strong> 25 May 2026</p>
+
+            <p><strong>Price:</strong> $300 per ticket</p>
+
+            <p><strong>Remaining Seats:</strong> 120</p>
+
+        </div>
+
+        <h3>Booking Details</h3>
+
+        <form id="bookingForm" class="payment-form">
+
+            <input
+                id="fullName"
+                type="text"
+                required
+                placeholder="Full Name"
+            />
+
+            <input
+                id="email"
+                type="email"
+                required
+                placeholder="Email Address"
+            />
+
+            <input
+                id="tickets"
+                type="number"
+                required
+                min="1"
+                placeholder="Number of Tickets"
+            />
+
+            <button class="btn btn-primary">
+                Continue to Checkout
+            </button>
+
+        </form>
+
+        <div
+            class="events-note"
+            id="bookingMessage"
+            style="
+                display:none;
+                color:#0f5a1f;
+                margin-top:.7rem
+            "
+        >
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+
+    <p>
+        TicketZone - Your trusted ticket booking platform.
+    </p>
+
+</footer>
+
+<script src="booking.js"></script>
+<script src="auth.js"></script>
+
+</body>
+</html>
