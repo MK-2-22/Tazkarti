@@ -9,18 +9,18 @@
             <li><a th:href="@{/home}">Home</a></li>
             <li><a th:href="@{/events}">Events</a></li>
             
-            <th:block th:if="${session.loggedUser == null && session.admin == null}">
+            <th:block th:if="${#request.userPrincipal == null}">
                 <li><a th:href="@{/login}">Login</a></li>
                 <li><a th:href="@{/register}">Sign Up</a></li>
             </th:block>
 
-            <th:block th:if="${session.loggedUser != null}">
+            <th:block th:if="${#request.userPrincipal != null}">
                 <li><a th:href="@{/profile}">Profile</a></li>
-                <li><a th:href="@{/logout}">Logout</a></li>
-            </th:block>
-
-            <th:block th:if="${session.admin != null && session.admin == true}">
-                <li><a th:href="@{/admin-dashboard}">Admin Panel</a></li>
+                
+                <th:block th:if="${#request.isUserInRole('ADMIN')}">
+                    <li><a th:href="@{/admin/dashboard}">Admin Panel</a></li>
+                </th:block>
+                
                 <li><a th:href="@{/logout}">Logout</a></li>
             </th:block>
         </ul>
