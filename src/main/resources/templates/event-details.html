@@ -49,6 +49,7 @@
         <div class="event-card-details">
 
             <img th:src="${event.get().imageUrl}"
+                 class="event-image"
                  alt="Event Image">
 
             <div class="event-body">
@@ -56,17 +57,17 @@
                 <h3 th:text="${event.get().title}"></h3>
 
                 <p>
-                    Location:
+                    <strong>Location:</strong>
                     <span th:text="${event.get().location}"></span>
                 </p>
 
                 <p>
-                    Price:
+                    <strong>Price:</strong>
                     <span th:text="${event.get().price}"></span> EGP
                 </p>
 
                 <p>
-                    Capacity:
+                    <strong>Capacity:</strong>
                     <span th:text="${event.get().capacity}"></span>
                 </p>
 
@@ -90,4 +91,5 @@
 </footer>
 
 </body>
+
 </html>
