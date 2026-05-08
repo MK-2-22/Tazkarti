@@ -27,5 +27,23 @@
             </tr>
         </tbody>
     </table>
+    <h2>Send Email</h2>
+
+<form th:action="@{/admin/send-email}" method="post">
+
+    <label>Email:</label><br>
+    <input type="email" name="to" required><br><br>
+
+    <label>Subject:</label><br>
+    <input type="text" name="subject" required><br><br>
+
+    <label>Message:</label><br>
+    <textarea name="body" rows="5" cols="40" required></textarea><br><br>
+
+    <button type="submit">
+        Send Email
+    </button>
+
+</form>
 </body>
 </html>

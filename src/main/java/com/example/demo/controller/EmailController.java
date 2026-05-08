@@ -1,10 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.demo.service.EmailService;
 
 @Controller
 public class EmailController {
@@ -12,22 +13,13 @@ public class EmailController {
     @Autowired
     private EmailService emailService;
 
-    @PostMapping("/support")
-    public String sendMessage(@RequestParam String name,
-                              @RequestParam String email,
-                              @RequestParam String message) {
+    @PostMapping("/admin/send-email")
+    public String sendEmail(@RequestParam String to,
+                            @RequestParam String subject,
+                            @RequestParam String body) {
 
-        String body =
-                "Name: " + name +
-                "\nEmail: " + email +
-                "\nMessage: " + message;
+        emailService.sendEmail(to, subject, body);
 
-        emailService.sendEmail(
-                "bodyamrbody2006@gmail.com@gmail.com",
-                "TicketZone Support Message",
-                body
-        );
-
-        return "redirect:/support";
+        return "redirect:/admin/dashboard";
     }
 }
