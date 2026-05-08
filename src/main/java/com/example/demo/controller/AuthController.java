@@ -1,16 +1,18 @@
 package com.example.demo.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.dto.UserRegistrationDTO;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AuthController {
@@ -18,66 +20,40 @@ public class AuthController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/")
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @GetMapping("/login")
     public String loginPage() {
         return "login";
     }
 
     @GetMapping("/register")
-    public String registerPage() {
+    public String registerPage(Model model) {
+        model.addAttribute("userDTO", new UserRegistrationDTO());
         return "register";
     }
 
     @PostMapping("/register")
-    public String registerUser(@RequestParam String name,
-                               @RequestParam String email,
-                               @RequestParam String password) {
-
-        User user = new User(name, email, password, "USER");
+    public String registerUser(@ModelAttribute("userDTO") UserRegistrationDTO userDTO) {
+        
+        String hashedPassword = passwordEncoder.encode(userDTO.getPassword());
+        
+        User user = new User(userDTO.getName(), userDTO.getEmail(), hashedPassword, "ROLE_USER");
         userRepository.save(user);
 
         return "redirect:/login";
     }
 
-    @PostMapping("/login")
-    public String loginUser(@RequestParam String email,
-                            @RequestParam String password,
-                            HttpSession session,
-                            Model model) {
-
-        if(email.equals("admin@gmail.com")
-           && password.equals("admin1234"))
-        {
-            session.setAttribute("admin", true);
-
-            return "redirect:/admin-dashboard";
-        }
-
-        User user = userRepository.findByEmail(email);
-
-        if (user != null &&
-            user.getPassword().equals(password)) {
-
-            session.setAttribute("loggedUser", user);
-
-            return "redirect:/home";
-        }
-
-        else {
-
-            model.addAttribute("error",
-                               "Invalid email or password");
-
-            return "login";
-        }
-    }
 
     @GetMapping("/profile")
-    public String profilePage(HttpSession session,
-                              Model model) {
+    public String profilePage(Principal principal, Model model) {
+        
+        if (principal == null) {
+            return "redirect:/login";
+        }
 
-        User user =
-        (User) session.getAttribute("loggedUser");
+        User user = userRepository.findByEmail(principal.getName());
 
         if (user == null) {
             return "redirect:/login";
@@ -88,25 +64,4 @@ public class AuthController {
         return "profile";
     }
 
-    @GetMapping("/admin-dashboard")
-    public String adminDashboard(HttpSession session)
-    {
-        Boolean isAdmin =
-        (Boolean) session.getAttribute("admin");
-
-        if(isAdmin == null || !isAdmin)
-        {
-            return "redirect:/login";
-        }
-
-        return "admin-dashboard";
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-
-        session.invalidate();
-
-        return "redirect:/";
-    }
 }
