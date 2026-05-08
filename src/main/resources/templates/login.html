@@ -1,26 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Login - Tazkarti</title>
-    <link rel="stylesheet" th:href="@{/css/auth.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Login</h2>
+<header class="hero">
 
-    <p th:text="${error}" class="error"></p>
+    <nav class="nav">
 
-    <form action="/login" method="post">
-        <input type="email" name="email" placeholder="Enter Email" required>
-        <input type="password" name="password" placeholder="Enter Password" required>
-        <button type="submit">Login</button>
-    </form>
+        <h1 class="logo">TicketZone</h1>
 
-    <p>Don't have an account?
-        <a href="/register">Register Here</a>
-    </p>
-</div>
+        <ul class="nav-links">
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/events}">Events</a></li>
+            <li><a th:href="@{/register}">Register</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="hero-content">
+        <p class="tag">Welcome Back</p>
+        <h2>Login To Your Account</h2>
+    </div>
+
+</header>
+
+<main class="simple-main">
+
+    <section class="simple-section auth-wrap">
+
+        <h3>Login</h3>
+
+        <p th:text="${error}"
+           class="events-note"></p>
+
+        <form action="/login"
+              method="post"
+              class="auth-form">
+
+            <input type="email"
+                   name="email"
+                   placeholder="Enter Email"
+                   required>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter Password"
+                   required>
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Login
+            </button>
+
+        </form>
+
+        <p>
+            Don't have an account?
+            <a th:href="@{/register}">
+                Register Here
+            </a>
+        </p>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>TicketZone - Your trusted ticket booking platform.</p>
+</footer>
 
 </body>
+
 </html>

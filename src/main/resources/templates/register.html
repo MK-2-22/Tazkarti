@@ -1,26 +1,83 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Register - Tazkarti</title>
-    <link rel="stylesheet" th:href="@{/css/auth.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Create Account</h2>
+<header class="hero">
 
-    <form action="/register" method="post">
-        <input type="text" name="name" placeholder="Enter Name" required>
-        <input type="email" name="email" placeholder="Enter Email" required>
-        <input type="password" name="password" placeholder="Enter Password" required>
+    <nav class="nav">
 
-        <button type="submit">Register</button>
-    </form>
+        <h1 class="logo">TicketZone</h1>
 
-    <p>Already have an account?
-        <a href="/login">Login Here</a>
-    </p>
-</div>
+        <ul class="nav-links">
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/events}">Events</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="hero-content">
+        <p class="tag">Join Us</p>
+        <h2>Create Your Account</h2>
+    </div>
+
+</header>
+
+<main class="simple-main">
+
+    <section class="simple-section auth-wrap">
+
+        <h3>Create Account</h3>
+
+        <form action="/register"
+              method="post"
+              class="auth-form">
+
+            <input type="text"
+                   name="name"
+                   placeholder="Enter Name"
+                   required>
+
+            <input type="email"
+                   name="email"
+                   placeholder="Enter Email"
+                   required>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter Password"
+                   required>
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Register
+            </button>
+
+        </form>
+
+        <p>
+            Already have an account?
+            <a th:href="@{/login}">
+                Login Here
+            </a>
+        </p>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>TicketZone - Your trusted ticket booking platform.</p>
+</footer>
 
 </body>
+
 </html>
