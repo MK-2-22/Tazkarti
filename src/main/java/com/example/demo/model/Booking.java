@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,19 +29,22 @@ public class Booking {
     private Event event;
 
     private int numberOfTickets;
+    
     private double totalPrice;
-    private LocalDateTime bookingDate = LocalDateTime.now();
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime bookingDate;
 
     public Booking() {
     }
 
-    public Booking(Long id, User user, Event event, int numberOfTickets, double totalPrice, LocalDateTime bookingDate) {
+    public Booking(Long id, User user, Event event, int numberOfTickets, double totalPrice) {
         this.id = id;
         this.user = user;
         this.event = event;
         this.numberOfTickets = numberOfTickets;
         this.totalPrice = totalPrice;
-        this.bookingDate = bookingDate;
     }
 
     public Long getId() {
