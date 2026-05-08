@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 
     <nav th:fragment="navbar" class="nav">
@@ -9,15 +10,15 @@
             <li><a th:href="@{/home}">Home</a></li>
             <li><a th:href="@{/events}">Events</a></li>
             
-            <th:block th:if="${#request.userPrincipal == null}">
+            <th:block sec:authorize="isAnonymous()">
                 <li><a th:href="@{/login}">Login</a></li>
                 <li><a th:href="@{/register}">Sign Up</a></li>
             </th:block>
 
-            <th:block th:if="${#request.userPrincipal != null}">
+            <th:block sec:authorize="isAuthenticated()">
                 <li><a th:href="@{/profile}">Profile</a></li>
                 
-                <th:block th:if="${#request.isUserInRole('ADMIN')}">
+                <th:block sec:authorize="hasRole('ADMIN')">
                     <li><a th:href="@{/admin/dashboard}">Admin Panel</a></li>
                 </th:block>
                 

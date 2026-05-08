@@ -2,51 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>TicketZone | Home</title>
-
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-
 </head>
 
 <body>
 
 <header class="hero">
 
-    <nav class="nav">
-
-        <h1 class="logo">TicketZone</h1>
-
-        <ul class="nav-links">
-             <li><a th:href="@{/home}">Home</a></li>
-            <li><a th:href="@{/events}">Events</a></li>
-            <li><a th:href="@{/profile}">Profile</a></li>
-            <li><a th:href="@{/logout}">Logout</a></li>
-        </ul>
-
-    </nav>
+    <nav th:replace="~{navbar :: navbar}"></nav>
 
     <div class="hero-content">
-
         <p class="tag">
             Live matches, concerts, and unforgettable nights
         </p>
-
         <h2>Welcome to TicketZone</h2>
-
         <p>
             Discover top football matches, concerts,
             and festivals with a smooth booking flow.
         </p>
-
         <a class="btn btn-primary" th:href="@{/events}">
             Explore Events
         </a>
-
     </div>
 
 </header>
@@ -54,96 +33,59 @@
 <main class="simple-main">
 
     <section class="simple-section">
-
         <h3>Your Event Journey Starts Here</h3>
-
         <p>
             Browse available events and book the one you like.
         </p>
-
     </section>
 
     <section class="simple-section home-stats">
-
         <div>
             <h4 th:text="${eventsCount}"></h4>
             <p>Active Event Listings</p>
         </div>
-
         <div>
             <h4>3</h4>
             <p>Top Categories</p>
         </div>
-
         <div>
             <h4>24/7</h4>
             <p>Customer Support</p>
         </div>
-
         <div>
             <h4>Fast</h4>
             <p>Booking & Checkout</p>
         </div>
-
     </section>
 
     <section class="simple-section">
-
         <h3>Featured Events</h3>
-
         <div class="events-grid">
-
-            <div class="event-card"
-                 th:each="event : ${featuredEvents}">
-
-                <img th:src="${event.imageUrl}"
-                     alt="Event Image" />
-
+            <div class="event-card" th:each="event : ${featuredEvents}">
+                <img th:src="${event.imageUrl}" alt="Event Image" />
                 <div class="event-body">
-
                     <h4 th:text="${event.title}"></h4>
-
                     <p th:text="${event.description}"></p>
-
-                    <a class="btn btn-primary"
-                       th:href="@{/events/{id}(id=${event.id})}">
+                    <a class="btn btn-primary" th:href="@{/events/{id}(id=${event.id})}">
                         View Details
                     </a>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
     <section class="simple-section">
-
         <h3>How TicketZone Works</h3>
-
         <ol class="steps">
-            <li>
-                Choose an event and open available listings.
-            </li>
-
-            <li>
-                Select your preferred venue/date and reserve your ticket.
-            </li>
-
-            <li>
-                Complete payment details and get instant confirmation.
-            </li>
+            <li>Choose an event and open available listings.</li>
+            <li>Select your preferred venue/date and reserve your ticket.</li>
+            <li>Complete payment details and get instant confirmation.</li>
         </ol>
-
     </section>
 
 </main>
 
-<footer class="footer">
-    <p>TicketZone - Your trusted ticket booking platform.</p>
-</footer>
+<footer th:replace="~{footer :: footer}"></footer>
 
 </body>
-
 </html>
