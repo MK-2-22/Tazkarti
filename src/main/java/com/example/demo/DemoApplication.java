@@ -23,7 +23,7 @@ public class DemoApplication {
                 
                 User admin = new User();
                 admin.setName("System Admin");
-                admin.setEmail("    ");
+                admin.setEmail("admin@ticketzone.com");
                 admin.setPassword(passwordEncoder.encode("admin1234"));
                 
                 admin.setRole("ROLE_ADMIN"); 
