@@ -15,6 +15,11 @@ public class HomeController {
     {
         this.hs = hs;
     }
+    
+    @GetMapping("/")
+    public String redirectToHome() {
+        return "redirect:/home";
+    }
 
     @GetMapping("/home")
     public String ViewHome(Model model) {
