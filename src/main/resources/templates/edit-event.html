@@ -5,12 +5,16 @@
     <link rel="stylesheet" th:href="@{/css/admin.css}">
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Tazkarti Admin</h2>
-        <a th:href="@{/admin/dashboard}">Dashboard</a>
-        <a th:href="@{/admin/add-event}">+ New Event</a>
-    </div>
-
+<div class="sidebar">
+    <h2>Tazkarti Admin</h2>
+    <a th:href="@{/admin/dashboard}" class="active">Dashboard</a>
+    <a th:href="@{/admin/add-event}">+ New Event</a>
+    <a th:href="@{/admin/add-admin}">+ New Admin</a>
+    
+    <a th:href="@{/home}">Back to Home</a>
+    
+    <a th:href="@{/logout}" style="margin-top: auto; border-top: 1px solid #34495e;">Logout</a>
+</div>
     <div class="main-content">
         <div class="card">
             <h1>Edit Event Details</h1>

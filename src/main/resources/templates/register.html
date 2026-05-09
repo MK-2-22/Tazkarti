@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Register - Tazkarti</title>
+    <title>Register - TicketZone</title>
 
     <link rel="stylesheet"
           th:href="@{/css/style.css}">
@@ -12,17 +12,7 @@
 
 <header class="hero">
 
-    <nav class="nav">
-
-        <h1 class="logo">TicketZone</h1>
-
-        <ul class="nav-links">
-            <li><a th:href="@{/home}">Home</a></li>
-            <li><a th:href="@{/events}">Events</a></li>
-            <li><a th:href="@{/login}">Login</a></li>
-        </ul>
-
-    </nav>
+    <nav th:replace="~{navbar :: navbar}"></nav>
 
     <div class="hero-content">
         <p class="tag">Join Us</p>
@@ -35,7 +25,11 @@
 
     <section class="simple-section auth-wrap">
 
-        <h3>Create Account</h3>
+        <h3 style="text-align: center; margin-bottom: 15px;">Create Account</h3>
+
+        <div th:if="${error}" style="color: white; background: #e74c3c; padding: 10px; border-radius: 6px; margin-bottom: 15px; text-align: center;">
+            <p th:text="${error}"></p>
+        </div>
 
         <form action="/register"
               method="post"
@@ -54,18 +48,20 @@
             <input type="password"
                    name="password"
                    placeholder="Enter Password"
-                   required>
+                   required
+                   minlength="8">
 
             <button type="submit"
-                    class="btn btn-primary">
+                    class="btn btn-primary"
+                    style="margin-top: 10px;">
                 Register
             </button>
 
         </form>
 
-        <p>
+        <p style="text-align: center; margin-top: 15px;">
             Already have an account?
-            <a th:href="@{/login}">
+            <a th:href="@{/login}" style="color: var(--primary); font-weight: bold;">
                 Login Here
             </a>
         </p>
@@ -74,9 +70,7 @@
 
 </main>
 
-<footer class="footer">
-    <p>TicketZone - Your trusted ticket booking platform.</p>
-</footer>
+<footer th:replace="~{footer :: footer}"></footer>
 
 </body>
 

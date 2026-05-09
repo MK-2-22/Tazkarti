@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Event;
-import com.example.demo.repository.EventRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
+
+import com.example.demo.model.Event;
+import com.example.demo.repository.EventRepository;
 
 @Service
 public class AdminService {
@@ -20,13 +22,11 @@ public class AdminService {
         eventRepository.save(event);
     }
 
-    // --- ADDED/UPDATED THIS METHOD ---
     public void updateEvent(Event event) {
         // In Spring Data JPA, .save() handles both creating and updating
         eventRepository.save(event); 
     }
 
-    // --- RENAMED THIS METHOD TO MATCH CONTROLLER ---
     public void deleteEventById(Long id) {
         eventRepository.deleteById(id);
     }

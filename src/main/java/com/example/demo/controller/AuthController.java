@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.dto.UserRegistrationDTO;
 import com.example.demo.model.User;
@@ -35,10 +36,16 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("userDTO") UserRegistrationDTO userDTO) {
-        
+    public String registerUser(
+        @ModelAttribute("userDTO") UserRegistrationDTO userDTO, 
+        RedirectAttributes redirectAttributes) {
+    
+        if (userRepository.findByEmail(userDTO.getEmail()) != null) {
+            redirectAttributes.addFlashAttribute("error", "This email is already registered. Please log in.");
+            return "redirect:/register";
+        }
+
         String hashedPassword = passwordEncoder.encode(userDTO.getPassword());
-        
         User user = new User(userDTO.getName(), userDTO.getEmail(), hashedPassword, "ROLE_USER");
         userRepository.save(user);
 
