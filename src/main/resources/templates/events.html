@@ -3,9 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>TicketZone | Events</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
 </head>
 
 <body>
@@ -13,6 +17,7 @@
 <header class="hero">
 
     <nav class="nav">
+
         <h1 class="logo">TicketZone</h1>
 
         <ul class="nav-links">
@@ -21,6 +26,7 @@
             <li><a th:href="@{/profile}">Profile</a></li>
             <li><a th:href="@{/logout}">Logout</a></li>
         </ul>
+
     </nav>
 
     <div class="hero-content">
@@ -40,45 +46,32 @@
             Browse all available events and choose your favorite experience.
         </p>
 
-        <form class="search-form"th:action="@{/events/search}"method="get"
-              style="display:flex; gap:12px; align-items:center; margin:20px 0;">
+        <form class="search-form" th:action="@{/events/search}" method="get">
 
-            <input type="text"
-                   name="keyword"
-                   placeholder="Search events..."
-                   style="flex:1; max-width:420px; padding:14px 18px; border:none; border-radius:12px; background:#f4f7fc; font-size:15px; outline:none; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+            <input type="text" name="keyword"  placeholder="Search events..."class="search-input">
 
-            <button type="submit"
-                    class="btn btn-primary"
-                    style="padding:14px 24px; border-radius:12px;">
-                Search
-            </button>
-
+            <button type="submit" class="btn btn-primary search-btn">Search</button>
         </form>
 
         <div class="events-grid">
 
-            <div class="event-card"
-                 th:each="event : ${events}"
-                 style="transition:0.3s; overflow:hidden; border:none; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
+            <div class="event-card custom-card" th:each="event : ${events}">
 
-                <img th:src="@{${event.imageUrl}}"
-                     alt="Event Image"
-                     style="height:220px; object-fit:cover;">
+                <img th:src="@{${event.imageUrl}}"  alt="Event Image" class="event-image">
 
                 <div class="event-body">
 
-                    <h4 th:text="${event.title}"
-                        style="margin-bottom:10px; font-size:22px;"></h4>
+                    <h4 th:text="${event.title}" class="event-title"></h4>
 
-                    <p th:text="${event.location}"
-                       style="margin-bottom:10px;"></p>
+                    <p th:text="${event.location}" class="event-location"></p>
 
-                    <p style="margin-bottom:18px; font-weight:600; color:#1f4ed8;">
-                        Price: <span th:text="${event.price}"></span> EGP
+                    <p class="event-price">
+                        Price:
+                        <span th:text="${event.price}"></span>
+                        EGP
                     </p>
 
-                    <a class="btn btn-primary book-btn"th:href="@{/events/{id}(id=${event.id})}">
+                    <a class="btn btn-primary book-btn" th:href="@{/events/{id}(id=${event.id})}">
                         View Details
                     </a>
 

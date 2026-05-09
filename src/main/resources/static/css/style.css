@@ -166,3 +166,58 @@ body { font-family: "Segoe UI", Arial, sans-serif; background: var(--bg); color:
     width:100%;
     text-align:center;
 }
+
+.search-form{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin:20px 0;
+}
+
+.search-input{
+    flex:1;
+    max-width:420px;
+    padding:14px 18px;
+    border:none;
+    border-radius:12px;
+    background:#f4f7fc;
+    font-size:15px;
+    outline:none;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.search-btn{
+    padding:14px 24px;
+    border-radius:12px;
+}
+
+.custom-card{
+    transition:.3s;
+    overflow:hidden;
+    border:none;
+    box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
+
+.custom-card:hover{
+    transform:translateY(-5px);
+}
+
+.event-image{
+    height:220px;
+    object-fit:cover;
+}
+
+.event-title{
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+.event-location{
+    margin-bottom:10px;
+}
+
+.event-price{
+    margin-bottom:18px;
+    font-weight:600;
+    color:#1f4ed8;
+}
