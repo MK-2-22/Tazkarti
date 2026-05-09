@@ -13,7 +13,7 @@ import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.EventRepository;
 
 @Service
-public class BookingService {
+public class Bookingservice {
 
     @Autowired
     private BookingRepository bookingRepository;

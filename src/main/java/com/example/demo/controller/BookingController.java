@@ -16,13 +16,13 @@ import com.example.demo.model.Event;
 import com.example.demo.model.User;
 import com.example.demo.repository.EventRepository;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.service.BookingService;
+import com.example.demo.service.Bookingservice;
 
 @Controller
 public class BookingController {
 
     @Autowired
-    private BookingService bookingService;
+    private Bookingservice bookingService;
 
     @Autowired
     private UserRepository userRepository;

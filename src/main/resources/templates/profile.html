@@ -1,22 +1,86 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Profile - Tazkarti</title>
-    <link rel="stylesheet" th:href="@{/css/auth.css}">
+
+    <title>Profile - TicketZone</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Welcome</h2>
+<header class="hero">
 
-    <p><strong>Name:</strong> <span th:text="${user.name}"></span></p>
-    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
-    <p><strong>Role:</strong> <span th:text="${user.role}"></span></p>
+    <nav class="nav">
 
-    <a href="/logout">
-        <button>Logout</button>
-    </a>
-</div>
+        <h1 class="logo">TicketZone</h1>
+
+        <ul class="nav-links">
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/events}">Events</a></li>
+            <li><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="hero-content">
+        <p class="tag">Your Account</p>
+        <h2>Profile Dashboard</h2>
+    </div>
+
+</header>
+
+<main class="simple-main">
+
+    <section class="simple-section profile-card">
+
+        <div class="profile-header">
+
+            <div class="profile-avatar">
+                <span th:text="${user.name.substring(0,1)}"></span>
+            </div>
+
+            <div>
+                <h3 th:text="${user.name}"></h3>
+
+                <p class="profile-role"
+                   th:text="${user.role}"></p>
+            </div>
+
+        </div>
+
+        <div class="profile-info">
+
+            <div class="info-box">
+                <h4>Email</h4>
+
+                <p th:text="${user.email}"></p>
+            </div>
+
+            <div class="info-box">
+                <h4>Account Type</h4>
+
+                <p th:text="${user.role}"></p>
+            </div>
+
+        </div>
+
+        <a th:href="@{/logout}"
+           class="btn btn-primary profile-btn">
+            Logout
+        </a>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>TicketZone - Your trusted ticket booking platform.</p>
+</footer>
 
 </body>
+
 </html>
