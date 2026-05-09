@@ -20,7 +20,14 @@ public class AdminService {
         eventRepository.save(event);
     }
 
-    public void deleteEvent(Long id) {
+    // --- ADDED/UPDATED THIS METHOD ---
+    public void updateEvent(Event event) {
+        // In Spring Data JPA, .save() handles both creating and updating
+        eventRepository.save(event); 
+    }
+
+    // --- RENAMED THIS METHOD TO MATCH CONTROLLER ---
+    public void deleteEventById(Long id) {
         eventRepository.deleteById(id);
     }
 
