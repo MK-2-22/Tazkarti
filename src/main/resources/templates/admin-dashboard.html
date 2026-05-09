@@ -1,49 +1,139 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
+
     <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/admin.css}">
+
 </head>
+
 <body>
-    <h1>Tazkarti Admin Panel</h1>
-    <a th:href="@{/admin/add-event}">+ Add New Event</a>
-    <table border="1" style="width:100%; margin-top:20px;">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Location</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="event : ${events}">
-                <td th:text="${event.title}"></td>
-                <td th:text="${event.location}"></td>
-                <td th:text="${event.price}"></td>
-                <td>
-                    <a th:href="@{/admin/delete/{id}(id=${event.id})}" 
-                       onclick="return confirm('Are you sure?')">Delete</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <h2>Send Email</h2>
 
-<form th:action="@{/admin/send-email}" method="post">
+<div class="sidebar">
 
-    <label>Email:</label><br>
-    <input type="email" name="to" required><br><br>
+    <h2>Admin Panel</h2>
 
-    <label>Subject:</label><br>
-    <input type="text" name="subject" required><br><br>
+    <a th:href="@{/admin/dashboard}">
+        Dashboard
+    </a>
 
-    <label>Message:</label><br>
-    <textarea name="body" rows="5" cols="40" required></textarea><br><br>
+    <a th:href="@{/admin/add-event}">
+        Add Event
+    </a>
 
-    <button type="submit">
-        Send Email
-    </button>
+    <a th:href="@{/logout}">
+        Logout
+    </a>
 
-</form>
+</div>
+
+<div class="main-content">
+
+    <div class="card">
+
+        <div class="top-bar">
+
+            <h1>Tazkarti Admin Panel</h1>
+
+            <a th:href="@{/admin/add-event}"
+               class="btn btn-add">
+                + Add Event
+            </a>
+
+        </div>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Title</th>
+                    <th>Location</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr th:each="event : ${events}">
+
+                    <td th:text="${event.title}"></td>
+
+                    <td th:text="${event.location}"></td>
+
+                    <td th:text="${event.price}"></td>
+
+                    <td>
+
+                        <a th:href="@{/admin/delete/{id}(id=${event.id})}"
+                           class="btn btn-delete"
+                           onclick="return confirm('Are you sure?')">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Send Email</h2>
+
+        <form th:action="@{/admin/send-email}"
+              method="post">
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input type="email"
+                       name="to"
+                       required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Subject</label>
+
+                <input type="text"
+                       name="subject"
+                       required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Message</label>
+
+                <textarea name="body"
+                          rows="5"
+                          required></textarea>
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-send">
+                Send Email
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
 </body>
+
 </html>
