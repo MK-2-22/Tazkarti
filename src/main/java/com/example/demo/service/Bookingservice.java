@@ -21,9 +21,18 @@ public class Bookingservice {
     @Autowired
     private EventRepository eventRepository;
 
+    // --- NEW: Method for AdminController line 28 ---
+    public List<Booking> getAllBookings() {
+        return bookingRepository.findAll();
+    }
+
+    // --- NEW: Method for AdminController delete functionality ---
+    public void deleteBookingById(Long id) {
+        bookingRepository.deleteById(id);
+    }
+
     @Transactional
     public Booking createBooking(User user, Long eventId, int tickets) {
-        
         Event event = eventRepository.findById(eventId)
             .orElseThrow(() -> new RuntimeException("Event not found"));
 

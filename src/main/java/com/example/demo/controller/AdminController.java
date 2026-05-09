@@ -1,22 +1,15 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
+import com.example.demo.model.Event;
+import com.example.demo.model.Booking;
+import com.example.demo.service.AdminService;
+import com.example.demo.service.Bookingservice; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.dto.EventDTO;
-import com.example.demo.model.Event;
-import com.example.demo.service.AdminService;
-
-import jakarta.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -25,90 +18,60 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private Bookingservice bookingService; // Type updated to Bookingservice
+
+    // --- DASHBOARD ---
     @GetMapping("/dashboard")
-    public String displayDashboard(Model model)
-    {
-        List<Event> events = adminService.getAllEvents();
-
-        model.addAttribute("events", events);
-
-        return "admin-dashboard";
+    public String adminDashboard(Model model) {
+        model.addAttribute("events", adminService.getAllEvents());
+        model.addAttribute("bookings", bookingService.getAllBookings());
+        return "admin/dashboard";
     }
 
-    @GetMapping("/add-event")
-    public String showAddForm(Model model)
-    {
-        model.addAttribute("eventDTO", new EventDTO());
-
-        return "add-event";
+    // --- EVENT MANAGEMENT ---
+    @GetMapping("/events/add")
+    public String showAddEventForm(Model model) {
+        model.addAttribute("event", new Event());
+        return "admin/add-event";
     }
 
-    @GetMapping("/edit/{id}")
-    public String showEditForm(
-            @PathVariable("id") Long id,
-            Model model)
-    {
-        Event event = adminService.getEventById(id);
-
-        if(event != null)
-        {
-            EventDTO eventDTO = new EventDTO();
-
-            eventDTO.setId(event.getId());
-            eventDTO.setTitle(event.getTitle());
-            eventDTO.setDescription(event.getDescription());
-            eventDTO.setLocation(event.getLocation());
-            eventDTO.setPrice(event.getPrice());
-            eventDTO.setCapacity(event.getCapacity());
-            eventDTO.setImageUrl(event.getImageUrl());
-
-            model.addAttribute("eventDTO", eventDTO);
-
-            return "edit-event";
-        }
-
-        return "redirect:/admin/dashboard";
-    }
-
-    @PostMapping("/save")
-    public String saveEvent(
-            @Valid
-            @ModelAttribute("eventDTO")
-            EventDTO eventDTO,
-
-            BindingResult result)
-    {
-        if(result.hasErrors())
-        {
-            if(eventDTO.getId() != null)
-            {
-                return "edit-event";
-            }
-
-            return "add-event";
-        }
-
-        Event event = new Event();
-
-        event.setId(eventDTO.getId());
-        event.setTitle(eventDTO.getTitle());
-        event.setDescription(eventDTO.getDescription());
-        event.setLocation(eventDTO.getLocation());
-        event.setPrice(eventDTO.getPrice());
-        event.setCapacity(eventDTO.getCapacity());
-        event.setImageUrl(eventDTO.getImageUrl());
-
+    @PostMapping("/events/save")
+    public String saveEvent(@ModelAttribute("event") Event event) {
         adminService.saveEvent(event);
-
         return "redirect:/admin/dashboard";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteEvent(
-            @PathVariable("id") Long id)
-    {
-        adminService.deleteEvent(id);
+    @GetMapping("/events/edit/{id}")
+    public String showEditEventForm(@PathVariable Long id, Model model) {
+        Event event = adminService.getEventById(id);
+        model.addAttribute("event", event);
+        return "admin/edit-event";
+    }
 
+    @PostMapping("/events/update")
+    public String updateEvent(@ModelAttribute("event") Event event) {
+        adminService.updateEvent(event);
         return "redirect:/admin/dashboard";
+    }
+
+    @GetMapping("/events/delete/{id}")
+    public String deleteEvent(@PathVariable Long id) {
+        adminService.deleteEventById(id);
+        return "redirect:/admin/dashboard";
+    }
+
+    // --- BOOKING MANAGEMENT ---
+    @GetMapping("/bookings")
+    public String viewAllBookings(Model model) {
+        List<Booking> bookings = bookingService.getAllBookings();
+        model.addAttribute("bookings", bookings);
+        return "admin/bookings-list"; 
+    }
+
+    @PostMapping("/bookings/delete/{id}")
+    public String deleteBooking(@PathVariable Long id) {
+        bookingService.deleteBookingById(id);
+        return "redirect:/admin/bookings";
     }
 }
