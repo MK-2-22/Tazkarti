@@ -10,6 +10,10 @@
             <li><a th:href="@{/home}">Home</a></li>
             <li><a th:href="@{/events}">Events</a></li>
             
+            <li><a th:href="@{/about}">About</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li><a th:href="@{/support}">Support</a></li>
+            
             <th:block sec:authorize="isAnonymous()">
                 <li><a th:href="@{/login}">Login</a></li>
                 <li><a th:href="@{/register}">Sign Up</a></li>
